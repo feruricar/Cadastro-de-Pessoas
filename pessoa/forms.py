@@ -1,15 +1,17 @@
-
-from datetime import date
 from django import forms
-from django.forms import fields, models
-from .models import Pessoa
+from .models import Pessoa, Contato
 
 class PessoaForm(forms.ModelForm):
-    data_nacimento = forms.DateField(
+    data_nascimento = forms.DateField(
         widget=forms.TextInput(
-            attrs={"type":"date"}
+            attrs={"type": "date"}
         )
     )
     class Meta:
         model = Pessoa
-        fields = ['nome_completo', 'data_nacimento','ativa']
+        fields = ['nome_completo', 'data_nascimento', 'ativa']
+
+class ContatoForm(forms.ModelForm):
+    class Meta:
+        model = Contato
+        fields = ['nome', 'email', 'telefone']
